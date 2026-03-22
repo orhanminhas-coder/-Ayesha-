@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Ayesha ❤️</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+background:#3b2a1a;
+font-family:'Poppins', sans-serif;
+color:white;
+text-align:center;
+}
+
+/* Butterfly */
+.butterfly{
+position:absolute;
+width:50px;
+animation:float 6s infinite ease-in-out;
+}
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+100%{transform:translateY(0);}
+}
+
+/* Countdown */
+#countdown{
+font-size:80px;
+margin-top:200px;
+}
+
+/* Button */
+#openBtn{
+display:none;
+margin-top:200px;
+padding:15px 30px;
+font-size:22px;
+background:#fff;
+color:#3b2a1a;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* Page 2 */
+#page2{
+display:none;
+position:relative;
+height:100vh;
+}
+
+/* Rain */
+.rain{
+position:absolute;
+top:-20px;
+font-size:20px;
+animation:fall linear infinite;
+}
+@keyframes fall{
+to{transform:translateY(110vh);}
+}
+
+/* Image */
+img{
+width:220px;
+border-radius:20px;
+margin-top:40px;
+}
+
+/* Text */
+#text{
+position:absolute;
+bottom:-200px;
+width:100%;
+font-size:26px;
+font-weight:bold;
+color:#f5e6cc;
+animation:scrollUp 20s linear forwards;
+}
+
+@keyframes scrollUp{
+0%{bottom:-200px;}
+100%{bottom:100%;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Butterflies -->
+<img src="https://i.ibb.co/7JfqXxB/butterfly.png" class="butterfly" style="left:10%; top:20%;">
+<img src="https://i.ibb.co/7JfqXxB/butterfly.png" class="butterfly" style="left:70%; top:40%;">
+<img src="https://i.ibb.co/7JfqXxB/butterfly.png" class="butterfly" style="left:40%; top:70%;">
+
+<!-- Countdown -->
+<div id="countdown">3</div>
+
+<!-- Button -->
+<button id="openBtn" onclick="openPage()">Miss Ayesha Click Open</button>
+
+<!-- Page 2 -->
+<div id="page2">
+
+<audio id="song" src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" loop></audio>
+
+<img src="https://i.ibb.co/0jqHpnp/girl.jpg">
+
+<div id="text">
+Mara Rang Main<br><br>
+Rangny Wali<br><br>
+
+Pari Ho Ya Ho<br><br>
+Pario Ke Rani<br><br>
+
+Ya Ho Mari<br><br>
+Pream Khanii<br><br>
+
+Mara Sawalo Ka<br><br>
+jawab Doo<br><br>
+
+DOO NAA....
+</div>
+
+</div>
+
+<script>
+
+// Countdown
+let count = 3;
+let countdown = document.getElementById("countdown");
+
+let timer = setInterval(()=>{
+count--;
+countdown.innerText = count;
+
+if(count==0){
+clearInterval(timer);
+countdown.style.display="none";
+document.getElementById("openBtn").style.display="inline-block";
+}
+},1000);
+
+// Open Page
+function openPage(){
+document.body.style.overflow="hidden";
+document.getElementById("openBtn").style.display="none";
+document.getElementById("page2").style.display="block";
+
+document.getElementById("song").play();
+
+startRain();
+}
+
+// Rain Effect
+function startRain(){
+setInterval(()=>{
+let el = document.createElement("div");
+el.classList.add("rain");
+
+let icons = ["❤️","🍃","🌸"];
+el.innerText = icons[Math.floor(Math.random()*icons.length)];
+
+el.style.left = Math.random()*100 + "vw";
+el.style.animationDuration = (2 + Math.random()*3) + "s";
+
+document.body.appendChild(el);
+
+setTimeout(()=>{el.remove();},5000);
+
+},200);
+}
+
+</script>
+
+</body>
+</html>
